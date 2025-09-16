@@ -3,14 +3,12 @@ version: '3.8'
 services:
   web:
     build: ./web
-    ports:
-      - "8888:8080"
     depends_on:
       - database
       - cache
 
   database:
-    build: ./database
+    image: postgres:14-alpine
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
@@ -18,3 +16,4 @@ services:
 
   cache:
     build: ./cache
+
